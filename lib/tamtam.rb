@@ -60,8 +60,8 @@ private
     
   def process(args)
     return_value =
-    if args[:document]
-      doc = Hpricot(args[:document])
+    if args[:hpricot] || args[:document]
+      doc = args[:hpricot] || Hpricot(args[:document])
       style = (doc/"style").first
       [(style && style.inner_html), doc]
     else
